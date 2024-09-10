@@ -4,21 +4,22 @@ package com.example.carapp.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.carapp.model.Car
 import com.example.carapp.databinding.CarItemBinding
+import com.example.carapp.model.Car
 
-class CarAdapter(private val carList:ArrayList<Car>): RecyclerView.Adapter<CarAdapter.MyViewHolder>() {
-    var onClick :((Car) -> Unit) ?= null
+class CarAdapter(private val carList: ArrayList<Car>) :
+    RecyclerView.Adapter<CarAdapter.MyViewHolder>() {
+    var onClick: ((Car) -> Unit)? = null
+
     class MyViewHolder(val binding: CarItemBinding) : RecyclerView.ViewHolder(binding.root)
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val view = CarItemBinding.inflate(
-          LayoutInflater.from(parent.context),
-            parent
-            attachToParent false
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
         return MyViewHolder(view)
     }
@@ -35,7 +36,7 @@ class CarAdapter(private val carList:ArrayList<Car>): RecyclerView.Adapter<CarAd
             carPrice.text = "Price: $" + carList[position].carPrice.toString()
             carImg.setImageResource(carList[position].carImg)
         }
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClick?.invoke(carList[position])
         }
 
