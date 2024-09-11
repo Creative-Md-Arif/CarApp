@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.carapp.adapter.CarAdapter
 import com.example.carapp.databinding.ActivityMainBinding
@@ -56,6 +57,8 @@ class MainActivity : AppCompatActivity() {
         binding.addBtn.setOnClickListener{
             showCarAddDialog()
         }
+
+
     }
 
     private fun showCarAddDialog() {

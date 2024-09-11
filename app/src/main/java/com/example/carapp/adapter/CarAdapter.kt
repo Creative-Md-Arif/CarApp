@@ -3,6 +3,7 @@ package com.example.carapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.carapp.databinding.CarItemBinding
 import com.example.carapp.model.Car
@@ -40,7 +41,19 @@ class CarAdapter(private val carList: ArrayList<Car>) :
             onClick?.invoke(carList[position])
         }
 
-    }
+        holder.itemView.setOnClickListener{
+           AlertDialog.Builder(holder.itemView.context)
+               .setTitle("Delete Car Item")
+               .setMessage("Are you sure you want to delete this item?")
+               .setPositiveButton("Yes"){_,_ ->
+                   carList.removeAt(position)
+                   notifyItemRemoved(position)
+               }
+               .setNegativeButton("No" , null)
+               .show()
+               true
 
+               }
+    }
 
 }
